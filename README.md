@@ -48,4 +48,4 @@ Spring Boot/Java 8, Maven, TDD
 	
 ## Run :
 
-docker run -p 8080:8080 -t grignona/myfoobarqix:latest
+```docker run -p 8080:8080 -t grignona/myfoobarqix:latest```
