@@ -42,6 +42,10 @@ We have a new business request : we must keep a trace of 0 in numbers, each 0 mu
 10101 => FooQix**
 ```
 
-## Implementation : Java 8
+## Implementation : 
+
+Java 8
 	
-## Run : ...
+## Run :
+
+...
