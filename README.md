@@ -44,8 +44,8 @@ We have a new business request : we must keep a trace of 0 in numbers, each 0 mu
 
 ## Implementation : 
 
-Java 8
+Spring Boot/Java 8, Maven, TDD
 	
 ## Run :
 
-...
+TODO docker
