@@ -40,4 +40,16 @@ public class FooBarQixTests {
 		// Arrange
 		assertThat(result).isEqualTo("Qix");
 	}
+	
+	@Test
+	public void compute_ShouldWriteNumber_WhenNumberIsNotDivisibleByNumberRules() {
+		// Assert
+		String number = "2";
+		
+		// Act
+		String result = FooBarQix.compute(number);
+		
+		// Arrange
+		assertThat(result).isEqualTo("2");
+	}
 }
