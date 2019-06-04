@@ -65,4 +65,16 @@ public class FooBarQixTests {
 		assertThat(result).isEqualTo("FooFoo");
 	}
 	
+	@Test
+	public void compute_ShouldWriteBarBar_WhenNumberIs5() {
+		// Assert
+		String number = "5";
+		
+		// Act
+		String result = FooBarQix.compute(number);
+		
+		// Arrange
+		assertThat(result).isEqualTo("BarBar");
+	}
+	
 }
