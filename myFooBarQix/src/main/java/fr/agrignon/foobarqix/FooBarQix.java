@@ -79,5 +79,7 @@ public class FooBarQix {
 	 * @return result
 	 */
 	public static String computeSecondStep(String source) {
+		
+		return null;
 	}
 }
