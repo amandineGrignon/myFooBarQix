@@ -177,4 +177,16 @@ public class FooBarQixTests {
 		// Arrange
 		assertThat(result).isEqualTo("FooBarQix");
 	}
+	
+	@Test
+	public void computeSecondStep_ShouldReplaceZeroWithStar_WhenNumberContainsZero() {
+		// Assert
+		String number = "105";
+		
+		// Act
+		String result = FooBarQix.computeSecondStep(number);
+		
+		// Arrange
+		assertThat(result).isEqualTo("FooBarQix*Bar");
+	}
 }
