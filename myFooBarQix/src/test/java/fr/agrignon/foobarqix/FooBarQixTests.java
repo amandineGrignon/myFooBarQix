@@ -113,4 +113,16 @@ public class FooBarQixTests {
 		assertThat(result).isEqualTo("FooBar");
 	}
 	
+	@Test
+	public void compute_ShouldAddQix_WhenNumberContains7() {
+		// Assert
+		String number = "27";
+		
+		// Act
+		String result = FooBarQix.compute(number);
+		
+		// Arrange
+		assertThat(result).isEqualTo("FooQix");
+	}
+	
 }
