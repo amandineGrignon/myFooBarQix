@@ -165,4 +165,16 @@ public class FooBarQixTests {
 		}).isInstanceOf(IllegalArgumentException.class)
 		.hasMessage("For input string: \"%s\"", source);
 	}
+	
+	@Test
+	public void compute_ShouldWriteFooBarQix_WhenNumberIs0() {
+		// Assert
+		String number = "0";
+		
+		// Act
+		String result = FooBarQix.compute(number);
+		
+		// Arrange
+		assertThat(result).isEqualTo("FooBarQix");
+	}
 }
