@@ -92,13 +92,13 @@ public class FooBarQix {
 	 * @param source
 	 * @return sb
 	 */
-	private static StringBuilder checkIfEmptyString(StringBuilder sb, String source) {
+	private static StringBuilder checkIfEmptyString(StringBuilder sb, String source, int step) {
 		if (StringUtils.isEmpty(sb.toString()) 
 				|| (StringUtils.isEmpty(sb.toString().replace("*", ""))))
 		{
 			sb = new StringBuilder();
 			for (char c : source.toCharArray()) {
-				if (c == '0')
+				if (step == 2 && c == '0')
 					sb.append('*');
 				else
 					sb.append(c);
@@ -136,7 +136,7 @@ public class FooBarQix {
 		sb = checkContentString(source, sb, step);
 		
 		// Write the source number if the result is empty
-		sb = checkIfEmptyString(sb, source);
+		sb = checkIfEmptyString(sb, source, step);
 		
 		return sb.toString();
 	}
