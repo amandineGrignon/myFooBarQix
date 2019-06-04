@@ -1,5 +1,6 @@
 package fr.agrignon.foobarqix;
 
+import java.text.MessageFormat;
 import java.util.Collections;
 import java.util.LinkedHashMap;
 import java.util.Map;
@@ -27,6 +28,10 @@ public class FooBarQix {
 		
         // To convert the source to integer
 		int number = Integer.parseInt(source);
+		
+		if (number < 0) {
+			throw new IllegalArgumentException(MessageFormat.format("{0} is out of bounds", source));
+		}
 	
 		// "is divisible by" rules
 		for (Map.Entry<Integer, String> entry : FOOBARQIX_RULES.entrySet()) {
