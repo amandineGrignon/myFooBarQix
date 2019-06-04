@@ -179,7 +179,7 @@ public class FooBarQixTests {
 	}
 	
 	@Test
-	public void computeSecondStep_ShouldReplaceZeroWithStar_WhenNumberContainsZero() {
+	public void computeSecondStep_ShouldReplaceZeroWithStar_WhenNumberContainsZeroWithDivisible() {
 		// Assert
 		String number = "105";
 		
@@ -188,5 +188,17 @@ public class FooBarQixTests {
 		
 		// Arrange
 		assertThat(result).isEqualTo("FooBarQix*Bar");
+	}
+	
+	@Test
+	public void computeSecondStep_ShouldReplaceZeroWithStar_WhenNumberContainsZeroWithoutDivisible() {
+		// Assert
+		String number = "101";
+		
+		// Act
+		String result = FooBarQix.compute(number, 2);
+		
+		// Arrange
+		assertThat(result).isEqualTo("1*1");
 	}
 }
