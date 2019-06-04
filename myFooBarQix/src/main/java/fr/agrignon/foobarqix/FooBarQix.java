@@ -85,6 +85,29 @@ public class FooBarQix {
 		return sb;
 	}
 	
+	/**
+	 * Write the source number if the result is empty
+	 * 
+	 * @param sb
+	 * @param source
+	 * @return sb
+	 */
+	private static StringBuilder checkIfEmptyString(StringBuilder sb, String source) {
+		if (StringUtils.isEmpty(sb.toString()) 
+				|| (StringUtils.isEmpty(sb.toString().replace("*", ""))))
+		{
+			sb = new StringBuilder();
+			for (char c : source.toCharArray()) {
+				if (c == '0')
+					sb.append('*');
+				else
+					sb.append(c);
+			}
+		}
+		
+		return sb;
+	}
+	
 	/***
 	 * Implements the following rules :
 	 * 
@@ -113,10 +136,7 @@ public class FooBarQix {
 		sb = checkContentString(source, sb, step);
 		
 		// Write the source number if the result is empty
-		if (StringUtils.isEmpty(sb.toString()))
-		{
-			return source;
-		}
+		sb = checkIfEmptyString(sb, source);
 		
 		return sb.toString();
 	}
