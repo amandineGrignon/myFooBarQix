@@ -16,4 +16,16 @@ public class FooBarQixTests {
 		// Arrange
 		assertThat(result).isEqualTo("Foo");
 	}
+	
+	@Test
+	public void compute_ShouldWriteBar_WhenNumberIsDivisibleBy5() {
+		// Assert
+		String number = "10";
+		
+		// Act
+		String result = FooBarQix.compute(number);
+		
+		// Arrange
+		assertThat(result).isEqualTo("Bar");
+	}
 }
