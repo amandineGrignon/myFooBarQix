@@ -89,4 +89,16 @@ public class FooBarQixTests {
 		assertThat(result).isEqualTo("QixQix");
 	}
 	
+	@Test
+	public void compute_ShouldAddFoo_WhenNumberContains3() {
+		// Assert
+		String number = "13";
+		
+		// Act
+		String result = FooBarQix.compute(number);
+		
+		// Arrange
+		assertThat(result).isEqualTo("Foo");
+	}
+	
 }
