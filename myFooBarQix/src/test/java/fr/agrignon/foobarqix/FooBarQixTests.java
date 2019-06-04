@@ -4,6 +4,8 @@ import org.junit.Test;
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.assertThatThrownBy;
 
+import java.text.MessageFormat;
+
 public class FooBarQixTests {
 
 	@Test
@@ -141,16 +143,14 @@ public class FooBarQixTests {
 	@Test
 	public void compute_ShouldThrowException_WhenNumberIsNegative() {
 		// Assert
-		String number = "-6";
-		
-		// Act
-		String result = FooBarQix.compute(number);
+		String source = "-6";
 		
 		// Arrange
 		assertThatThrownBy(() -> {
-			 //...
-			}).isInstanceOf(IllegalArgumentException.class)
-			.hasMessage("%s is out of bounds", number);
+			// Act
+			FooBarQix.compute(source);	
+		}).isInstanceOf(IllegalArgumentException.class)
+		.hasMessage("%s is out of bounds", source);
 	}
 	
 }
