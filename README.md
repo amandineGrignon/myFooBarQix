@@ -48,4 +48,7 @@ Spring Boot/Java 8, Maven, TDD
 	
 ## Run :
 
-```docker run -p 8080:8080 -t grignona/myfoobarqix:latest```
+From a docker terminal, run one of the following command line :
+
+- With arguments : ```docker run -p 8080:8080 -t grignona/myfoobarqix:latest 1 2 3 4 5 6 7 8 9 10 13 15 21 33 51 53```
+- Without argument : ```docker run -p 8080:8080 -t grignona/myfoobarqix:latest```
