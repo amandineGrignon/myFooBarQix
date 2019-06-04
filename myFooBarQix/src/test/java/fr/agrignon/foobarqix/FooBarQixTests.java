@@ -184,7 +184,7 @@ public class FooBarQixTests {
 		String number = "105";
 		
 		// Act
-		String result = FooBarQix.computeSecondStep(number);
+		String result = FooBarQix.compute(number, 2);
 		
 		// Arrange
 		assertThat(result).isEqualTo("FooBarQix*Bar");
