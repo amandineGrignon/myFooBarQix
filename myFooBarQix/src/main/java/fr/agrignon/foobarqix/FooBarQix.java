@@ -5,12 +5,17 @@ public class FooBarQix {
 
 	public static String compute(String source) {
 		
+		// to build the string
+        StringBuilder sb = new StringBuilder();
+		
 		int number = Integer.parseInt(source);
 		
 		if (number % 3 == 0)
-			return "Foo";
+			sb.append("Foo");
+		else if (number % 5 == 0)
+			sb.append("Bar");
 		
-		return null;
+		return sb.toString();
 	}
 	
 }
