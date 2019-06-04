@@ -43,6 +43,8 @@ public class FooBarQix {
 		for (char c : source.toCharArray()) {
 			if (c == '3')
 				sb.append("Foo");
+			else if (c == '5')
+				sb.append("Bar");
 		}
 		
 		return sb.toString();
