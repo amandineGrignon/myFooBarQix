@@ -2,11 +2,12 @@ package fr.agrignon.foobarqix;
 
 public class FooBarQix {
 
-	public String compute(String number) {
+
+	public static String compute(String source) {
 		
-		int nb = Integer.parseInt(number);
+		int number = Integer.parseInt(source);
 		
-		if (nb % 3 == 0)
+		if (number % 3 == 0)
 			return "Foo";
 		
 		return null;

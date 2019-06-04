@@ -7,12 +7,13 @@ public class FooBarQixTests {
 
 	@Test
 	public void compute_ShouldWriteFoo_WhenNumberIsDivisibleBy3() {
-		
+		// Assert
 		String number = "6";
-		FooBarQix fbq = new FooBarQix();
 		
-		String result = fbq.compute(number);
+		// Act
+		String result = FooBarQix.compute(number);
 		
+		// Arrange
 		assertThat(result).isEqualTo("Foo");
 	}
 }
