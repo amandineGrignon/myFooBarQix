@@ -153,4 +153,16 @@ public class FooBarQixTests {
 		.hasMessage("%s is out of bounds", source);
 	}
 	
+	@Test
+	public void compute_ShouldThrowException_WhenSourceIsNotNumeric() {
+		// Assert
+		String source = "ABC";
+		
+		// Arrange
+		assertThatThrownBy(() -> {
+			// Act
+			FooBarQix.compute(source);	
+		}).isInstanceOf(IllegalArgumentException.class)
+		.hasMessage("For input string: \"%s\"", source);
+	}
 }
