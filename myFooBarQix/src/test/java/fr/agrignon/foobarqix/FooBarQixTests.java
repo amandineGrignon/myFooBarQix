@@ -54,7 +54,7 @@ public class FooBarQixTests {
 	}
 	
 	@Test
-	public void compute_ShouldAddFoo_WhenNumberContains3() {
+	public void compute_ShouldWriteFooFoo_WhenNumberIs3() {
 		// Assert
 		String number = "3";
 		
@@ -64,4 +64,5 @@ public class FooBarQixTests {
 		// Arrange
 		assertThat(result).isEqualTo("FooFoo");
 	}
+	
 }
