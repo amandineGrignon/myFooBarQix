@@ -21,6 +21,17 @@ public class FooBarQix {
         FOOBARQIX_RULES = Collections.unmodifiableMap(map);
     }
 	
+	/***
+	 * Implements the following rules :
+	 * 
+	 * If the number is divisible by 3, write “Foo” instead of the number
+	 * If the number is divisible by 5, add “Bar”
+	 * If the number is divisible by 7, add “Qix”
+	 * For each digit 3, 5, 7, add “Foo”, “Bar”, “Qix” in the digits order.
+	 * 
+	 * @param source
+	 * @return result
+	 */
 	public static String compute(String source) {
 		
 		// To build the string
@@ -58,4 +69,15 @@ public class FooBarQix {
 		return sb.toString();
 	}
 	
+	/**
+	 * Implements the following rules:
+	 * 
+	 * Use the rules of the compute method
+	 * And keep a trace of 0 in numbers, each 0 must be replace par char “*“
+	 * 
+	 * @param source
+	 * @return result
+	 */
+	public static String computeSecondStep(String source) {
+	}
 }
