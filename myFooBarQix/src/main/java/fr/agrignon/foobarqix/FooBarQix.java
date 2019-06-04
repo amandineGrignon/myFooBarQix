@@ -40,6 +40,11 @@ public class FooBarQix {
 			return source;
 		}
 		
+		for (char c : source.toCharArray()) {
+			if (c == '3')
+				sb.append("Foo");
+		}
+		
 		return sb.toString();
 	}
 	
