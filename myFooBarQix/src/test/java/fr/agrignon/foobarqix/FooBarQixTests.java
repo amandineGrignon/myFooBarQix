@@ -101,4 +101,16 @@ public class FooBarQixTests {
 		assertThat(result).isEqualTo("Foo");
 	}
 	
+	@Test
+	public void compute_ShouldAddBar_WhenNumberContains5() {
+		// Assert
+		String number = "51";
+		
+		// Act
+		String result = FooBarQix.compute(number);
+		
+		// Arrange
+		assertThat(result).isEqualTo("FooBar");
+	}
+	
 }
