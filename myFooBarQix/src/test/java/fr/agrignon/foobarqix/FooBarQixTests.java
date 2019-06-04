@@ -125,4 +125,16 @@ public class FooBarQixTests {
 		assertThat(result).isEqualTo("FooQix");
 	}
 	
+	@Test
+	public void compute_ShouldWriteFooBarBar_WhenNumberDivisibleBy3And5AndContains5() {
+		// Assert
+		String number = "15";
+		
+		// Act
+		String result = FooBarQix.compute(number);
+		
+		// Arrange
+		assertThat(result).isEqualTo("FooBarBar");
+	}
+	
 }
