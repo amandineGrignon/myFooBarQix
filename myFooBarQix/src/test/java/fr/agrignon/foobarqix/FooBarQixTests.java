@@ -28,4 +28,16 @@ public class FooBarQixTests {
 		// Arrange
 		assertThat(result).isEqualTo("Bar");
 	}
+	
+	@Test
+	public void compute_ShouldWriteQix_WhenNumberIsDivisibleBy7() {
+		// Assert
+		String number = "14";
+		
+		// Act
+		String result = FooBarQix.compute(number);
+		
+		// Arrange
+		assertThat(result).isEqualTo("Qix");
+	}
 }
