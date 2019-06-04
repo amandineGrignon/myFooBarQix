@@ -2,6 +2,7 @@ package fr.agrignon.foobarqix;
 
 import org.junit.Test;
 import static org.assertj.core.api.Assertions.assertThat;
+import static org.assertj.core.api.Assertions.assertThatThrownBy;
 
 public class FooBarQixTests {
 
@@ -135,6 +136,21 @@ public class FooBarQixTests {
 		
 		// Arrange
 		assertThat(result).isEqualTo("FooBarBar");
+	}
+	
+	@Test
+	public void compute_ShouldThrowException_WhenNumberIsNegative() {
+		// Assert
+		String number = "-6";
+		
+		// Act
+		String result = FooBarQix.compute(number);
+		
+		// Arrange
+		assertThatThrownBy(() -> {
+			 //...
+			}).isInstanceOf(IllegalArgumentException.class)
+			.hasMessage("%s is out of bounds", number);
 	}
 	
 }
