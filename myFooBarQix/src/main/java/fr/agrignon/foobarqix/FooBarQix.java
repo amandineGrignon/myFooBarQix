@@ -4,6 +4,8 @@ import java.util.Collections;
 import java.util.LinkedHashMap;
 import java.util.Map;
 
+import org.springframework.util.StringUtils;
+
 public class FooBarQix {
 
 	private static final Map<Integer, String> FOOBARQIX_RULES;
@@ -30,6 +32,12 @@ public class FooBarQix {
 		for (Map.Entry<Integer, String> entry : FOOBARQIX_RULES.entrySet()) {
 			if ((number % entry.getKey()) == 0)
 				sb.append(entry.getValue());
+		}
+		
+		// Write the source number if the result is empty
+		if (StringUtils.isEmpty(sb.toString()))
+		{
+			return source;
 		}
 		
 		return sb.toString();
