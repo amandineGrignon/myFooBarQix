@@ -80,6 +80,43 @@ public class FooBarQix {
 	 */
 	public static String computeSecondStep(String source) {
 		
-		return null;
+		// To build the string
+        StringBuilder sb = new StringBuilder();
+		
+        // To convert the source to integer
+		int number = Integer.parseInt(source);
+		
+		if (number < 0) {
+			throw new IllegalArgumentException(MessageFormat.format("{0} is out of bounds", source));
+		}
+	
+		// "is divisible by" rules
+		for (Map.Entry<Integer, String> entry : FOOBARQIX_RULES.entrySet()) {
+			if ((number % entry.getKey()) == 0)
+				sb.append(entry.getValue());
+		}
+		
+		// Check content of the source string
+		for (char c : source.toCharArray()) {
+			for (Map.Entry<Integer, String> entry : FOOBARQIX_RULES.entrySet()) {
+				if (c == String.valueOf(entry.getKey()).charAt(0))
+				{
+					sb.append(entry.getValue());
+				} 				
+			}
+			
+			if (c == '0')
+			{
+				sb.append('*');
+			}
+		}
+		
+		// Write the source number if the result is empty
+		if (StringUtils.isEmpty(sb.toString()))
+		{
+			return source;
+		}
+		
+		return sb.toString();
 	}
 }
