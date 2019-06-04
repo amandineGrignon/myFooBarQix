@@ -77,4 +77,16 @@ public class FooBarQixTests {
 		assertThat(result).isEqualTo("BarBar");
 	}
 	
+	@Test
+	public void compute_ShouldWriteQixQix_WhenNumberIs7() {
+		// Assert
+		String number = "7";
+		
+		// Act
+		String result = FooBarQix.compute(number);
+		
+		// Arrange
+		assertThat(result).isEqualTo("QixQix");
+	}
+	
 }
