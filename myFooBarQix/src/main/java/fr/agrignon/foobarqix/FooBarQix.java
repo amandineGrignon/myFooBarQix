@@ -40,11 +40,14 @@ public class FooBarQix {
 			return source;
 		}
 		
+		// Check content of the source string
 		for (char c : source.toCharArray()) {
-			if (c == '3')
-				sb.append("Foo");
-			else if (c == '5')
-				sb.append("Bar");
+			for (Map.Entry<Integer, String> entry : FOOBARQIX_RULES.entrySet()) {
+				if (c == String.valueOf(entry.getKey()).charAt(0))
+				{
+					sb.append(entry.getValue());
+				}
+			}
 		}
 		
 		return sb.toString();
