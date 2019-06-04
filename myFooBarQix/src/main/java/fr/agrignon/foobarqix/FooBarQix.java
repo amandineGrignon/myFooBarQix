@@ -34,12 +34,6 @@ public class FooBarQix {
 				sb.append(entry.getValue());
 		}
 		
-		// Write the source number if the result is empty
-		if (StringUtils.isEmpty(sb.toString()))
-		{
-			return source;
-		}
-		
 		// Check content of the source string
 		for (char c : source.toCharArray()) {
 			for (Map.Entry<Integer, String> entry : FOOBARQIX_RULES.entrySet()) {
@@ -48,6 +42,12 @@ public class FooBarQix {
 					sb.append(entry.getValue());
 				}
 			}
+		}
+		
+		// Write the source number if the result is empty
+		if (StringUtils.isEmpty(sb.toString()))
+		{
+			return source;
 		}
 		
 		return sb.toString();
