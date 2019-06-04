@@ -12,6 +12,7 @@ public class FooBarQix {
         Map<Integer, String> map = new LinkedHashMap<>();
         map.put(3, "Foo");
         map.put(5, "Bar");
+        map.put(7, "Qix");
 
         // Unmodifiable object makes it thread-safe (only reads can occurs)
         FOOBARQIX_RULES = Collections.unmodifiableMap(map);
