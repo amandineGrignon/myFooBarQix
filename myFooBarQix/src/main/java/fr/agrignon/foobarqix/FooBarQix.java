@@ -21,10 +21,6 @@ public class FooBarQix {
         FOOBARQIX_RULES = Collections.unmodifiableMap(map);
     }
 	
-	public static String compute(String source) {
-		return compute(source, 1);
-	}
-	
 	/***
 	 * To convert the source to integer
 	 * 
@@ -65,10 +61,9 @@ public class FooBarQix {
 	 * 
 	 * @param source
 	 * @param sb
-	 * @param step
 	 * @return sb
 	 */
-	private static StringBuilder checkContentString(String source, StringBuilder sb, int step) {
+	private static StringBuilder checkContentString(String source, StringBuilder sb) {
 		for (char c : source.toCharArray()) {
 			for (Map.Entry<Integer, String> entry : FOOBARQIX_RULES.entrySet()) {
 				if (c == String.valueOf(entry.getKey()).charAt(0))
@@ -77,7 +72,7 @@ public class FooBarQix {
 				}
 			}
 			
-			if (step == 2 && c == '0') {
+			if (c == '0') {
 				sb.append('*');
 			}
 		}
@@ -92,13 +87,13 @@ public class FooBarQix {
 	 * @param source
 	 * @return sb
 	 */
-	private static StringBuilder checkIfEmptyString(StringBuilder sb, String source, int step) {
+	private static StringBuilder checkIfEmptyString(StringBuilder sb, String source) {
 		if (StringUtils.isEmpty(sb.toString()) 
 				|| (StringUtils.isEmpty(sb.toString().replace("*", ""))))
 		{
 			sb = new StringBuilder();
 			for (char c : source.toCharArray()) {
-				if (step == 2 && c == '0')
+				if (c == '0')
 					sb.append('*');
 				else
 					sb.append(c);
@@ -111,20 +106,16 @@ public class FooBarQix {
 	/***
 	 * Implements the following rules :
 	 * 
-	 * STEP 1:
 	 * If the number is divisible by 3, write “Foo” instead of the number
 	 * If the number is divisible by 5, add “Bar”
 	 * If the number is divisible by 7, add “Qix”
 	 * For each digit 3, 5, 7, add “Foo”, “Bar”, “Qix” in the digits order.
-	 * 
-	 * STEP 2:
 	 * And keep a trace of 0 in numbers, each 0 must be replace par char “*“
 	 * 
 	 * @param source
-	 * @param step
 	 * @return result
 	 */
-	public static String compute(String source, int step) {		
+	public static String compute(String source) {		
 	
 		// Check number
         Integer number = checkNumber(source);
@@ -133,10 +124,10 @@ public class FooBarQix {
         StringBuilder sb = divisibleRules(number);
 	
 		// Check content of the source string
-		sb = checkContentString(source, sb, step);
+		sb = checkContentString(source, sb);
 		
 		// Write the source number if the result is empty
-		sb = checkIfEmptyString(sb, source, step);
+		sb = checkIfEmptyString(sb, source);
 		
 		return sb.toString();
 	}

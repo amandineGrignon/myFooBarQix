@@ -18,35 +18,16 @@ public class MyFooBarQixApplication {
         System.exit(1);
 	}
 	
-	/**
-	 * Get the step number
-	 * 
-	 * @param arg
-	 * @return step
-	 */
-	private static int getStepNumber(String arg) {
-		if (arg.equals("-s1"))
-			return 1;
-		else if (arg.equals("-s2"))
-			return 2;
-		else
-			throw new IllegalArgumentException("The first argument must be -s1 or -s2 to select the step.");
-	}
-	
 	public static void main(String[] args) {
 		SpringApplication.run(MyFooBarQixApplication.class, args);
 		
 		if (args.length > 1) {
-			
-			int step = getStepNumber(args[0]);
-			
 			for(int i = 1; i < args.length; i++) {
 				// Call compute method from FooBarQix
-			    String result = FooBarQix.compute(args[i], step);
+			    String result = FooBarQix.compute(args[i]);
 			    
 			    System.out.format("%s => %s%n", args[i], result);	
-			}				
-			
+			}
 		} else {
 			showErrorsArgumentMissing();
 		}
