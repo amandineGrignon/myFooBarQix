@@ -14,6 +14,14 @@ public class FooBarQix {
 	 */
 	private StringBuilder resolved = new StringBuilder();
 	
+	/**
+	 * The input
+	 */
+	private String input;
+	
+	/**
+	 * The FooBarQix rules
+	 */
 	private static final Map<Integer, String> FOOBARQIX_RULES;
 	static {
         // Using a LinkedHashMap to keep the insertion order
@@ -32,11 +40,11 @@ public class FooBarQix {
 	 * @param source
 	 * @return number
 	 */
-	private Integer checkNumber(String source) {
-		Integer number = Integer.valueOf(source);
+	private Integer checkNumber() {
+		Integer number = Integer.valueOf(input);
 		
 		if (number < 0) {
-			throw new IllegalArgumentException(MessageFormat.format("{0} is out of bounds", source));
+			throw new IllegalArgumentException(MessageFormat.format("{0} is out of bounds", input));
 		}
 		
 		return number;
@@ -59,8 +67,8 @@ public class FooBarQix {
 	 * 
 	 * @param source
 	 */
-	private void checkContentString(String source) {
-		for (char c : source.toCharArray()) {
+	private void checkContentString() {
+		for (char c : input.toCharArray()) {
 			for (Map.Entry<Integer, String> entry : FOOBARQIX_RULES.entrySet()) {
 				if (c == String.valueOf(entry.getKey()).charAt(0))
 				{
@@ -79,12 +87,12 @@ public class FooBarQix {
 	 * 
 	 * @param source
 	 */
-	private void checkIfEmptyString(String source) {
+	private void checkIfEmptyString() {
 		if (StringUtils.isEmpty(resolved.toString()) 
 				|| (StringUtils.isEmpty(resolved.toString().replace("*", ""))))
 		{
 			resolved = new StringBuilder();
-			for (char c : source.toCharArray()) {
+			for (char c : input.toCharArray()) {
 				if (c == '0')
 					resolved.append('*');
 				else
@@ -105,19 +113,22 @@ public class FooBarQix {
 	 * @param source
 	 * @return result
 	 */
-	public String compute(String source) {		
+	public String compute(String input) {		
 	
+		// Save the input
+		this.input = input;
+		
 		// Check number
-        Integer number = checkNumber(source);
+        Integer number = checkNumber();
         
         // Divisible rules
         divisibleRules(number);
 	
 		// Check content of the source string
-		checkContentString(source);
+		checkContentString();
 		
 		// Write the source number if the result is empty
-		checkIfEmptyString(source);
+		checkIfEmptyString();
 		
 		return resolved.toString();
 	}
