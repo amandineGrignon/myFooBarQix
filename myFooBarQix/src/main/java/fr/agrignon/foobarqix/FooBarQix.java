@@ -8,7 +8,12 @@ import java.util.Map;
 import org.springframework.util.StringUtils;
 
 public class FooBarQix {
-
+	
+	/**
+	 * The result 
+	 */
+	private StringBuilder resolved = new StringBuilder();
+	
 	private static final Map<Integer, String> FOOBARQIX_RULES;
 	static {
         // Using a LinkedHashMap to keep the insertion order
@@ -41,66 +46,51 @@ public class FooBarQix {
 	 * "is divisible by" rules
 	 * 
 	 * @param number
-	 * @return sb
 	 */
-	private StringBuilder divisibleRules(Integer number) {
-		// To build the string
-        StringBuilder sb = new StringBuilder();
-		
-		// "is divisible by" rules
+	private void divisibleRules(Integer number) {
 		for (Map.Entry<Integer, String> entry : FOOBARQIX_RULES.entrySet()) {
 			if ((number % entry.getKey()) == 0)
-				sb.append(entry.getValue());
+				resolved.append(entry.getValue());
 		}
-		
-		return sb;
 	}
 	
 	/***
 	 * Check content of the source string
 	 * 
 	 * @param source
-	 * @param sb
-	 * @return sb
 	 */
-	private StringBuilder checkContentString(String source, StringBuilder sb) {
+	private void checkContentString(String source) {
 		for (char c : source.toCharArray()) {
 			for (Map.Entry<Integer, String> entry : FOOBARQIX_RULES.entrySet()) {
 				if (c == String.valueOf(entry.getKey()).charAt(0))
 				{
-					sb.append(entry.getValue());
+					resolved.append(entry.getValue());
 				}
 			}
 			
 			if (c == '0') {
-				sb.append('*');
+				resolved.append('*');
 			}
 		}
-		
-		return sb;
 	}
 	
 	/**
 	 * Write the source number if the result is empty
 	 * 
-	 * @param sb
 	 * @param source
-	 * @return sb
 	 */
-	private StringBuilder checkIfEmptyString(StringBuilder sb, String source) {
-		if (StringUtils.isEmpty(sb.toString()) 
-				|| (StringUtils.isEmpty(sb.toString().replace("*", ""))))
+	private void checkIfEmptyString(String source) {
+		if (StringUtils.isEmpty(resolved.toString()) 
+				|| (StringUtils.isEmpty(resolved.toString().replace("*", ""))))
 		{
-			sb = new StringBuilder();
+			resolved = new StringBuilder();
 			for (char c : source.toCharArray()) {
 				if (c == '0')
-					sb.append('*');
+					resolved.append('*');
 				else
-					sb.append(c);
+					resolved.append(c);
 			}
 		}
-		
-		return sb;
 	}
 	
 	/***
@@ -121,14 +111,14 @@ public class FooBarQix {
         Integer number = checkNumber(source);
         
         // Divisible rules
-        StringBuilder sb = divisibleRules(number);
+        divisibleRules(number);
 	
 		// Check content of the source string
-		sb = checkContentString(source, sb);
+		checkContentString(source);
 		
 		// Write the source number if the result is empty
-		sb = checkIfEmptyString(sb, source);
+		checkIfEmptyString(source);
 		
-		return sb.toString();
+		return resolved.toString();
 	}
 }
