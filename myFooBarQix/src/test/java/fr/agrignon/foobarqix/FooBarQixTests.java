@@ -29,7 +29,7 @@ public class FooBarQixTests {
 		String result = FooBarQix.compute(number);
 		
 		// Arrange
-		assertThat(result).isEqualTo("Bar");
+		assertThat(result).isEqualTo("Bar*");
 	}
 	
 	@Test
@@ -175,7 +175,7 @@ public class FooBarQixTests {
 		String result = FooBarQix.compute(number);
 		
 		// Arrange
-		assertThat(result).isEqualTo("FooBarQix");
+		assertThat(result).isEqualTo("FooBarQix*");
 	}
 	
 	@Test
@@ -184,7 +184,7 @@ public class FooBarQixTests {
 		String number = "105";
 		
 		// Act
-		String result = FooBarQix.compute(number, 2);
+		String result = FooBarQix.compute(number);
 		
 		// Arrange
 		assertThat(result).isEqualTo("FooBarQix*Bar");
@@ -196,7 +196,7 @@ public class FooBarQixTests {
 		String number = "101";
 		
 		// Act
-		String result = FooBarQix.compute(number, 2);
+		String result = FooBarQix.compute(number);
 		
 		// Arrange
 		assertThat(result).isEqualTo("1*1");
