@@ -22,9 +22,11 @@ public class MyFooBarQixApplication {
 		SpringApplication.run(MyFooBarQixApplication.class, args);
 		
 		if (args.length > 1) {
+			FooBarQix fooBarQix = new FooBarQix();
+			
 			for(int i = 1; i < args.length; i++) {
 				// Call compute method from FooBarQix
-			    String result = FooBarQix.compute(args[i]);
+			    String result = fooBarQix.compute(args[i]);
 			    
 			    System.out.format("%s => %s%n", args[i], result);	
 			}

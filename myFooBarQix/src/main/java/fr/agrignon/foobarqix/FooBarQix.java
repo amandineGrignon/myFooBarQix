@@ -27,7 +27,7 @@ public class FooBarQix {
 	 * @param source
 	 * @return number
 	 */
-	private static Integer checkNumber(String source) {
+	private Integer checkNumber(String source) {
 		Integer number = Integer.valueOf(source);
 		
 		if (number < 0) {
@@ -43,7 +43,7 @@ public class FooBarQix {
 	 * @param number
 	 * @return sb
 	 */
-	private static StringBuilder divisibleRules(Integer number) {
+	private StringBuilder divisibleRules(Integer number) {
 		// To build the string
         StringBuilder sb = new StringBuilder();
 		
@@ -63,7 +63,7 @@ public class FooBarQix {
 	 * @param sb
 	 * @return sb
 	 */
-	private static StringBuilder checkContentString(String source, StringBuilder sb) {
+	private StringBuilder checkContentString(String source, StringBuilder sb) {
 		for (char c : source.toCharArray()) {
 			for (Map.Entry<Integer, String> entry : FOOBARQIX_RULES.entrySet()) {
 				if (c == String.valueOf(entry.getKey()).charAt(0))
@@ -87,7 +87,7 @@ public class FooBarQix {
 	 * @param source
 	 * @return sb
 	 */
-	private static StringBuilder checkIfEmptyString(StringBuilder sb, String source) {
+	private StringBuilder checkIfEmptyString(StringBuilder sb, String source) {
 		if (StringUtils.isEmpty(sb.toString()) 
 				|| (StringUtils.isEmpty(sb.toString().replace("*", ""))))
 		{
@@ -115,7 +115,7 @@ public class FooBarQix {
 	 * @param source
 	 * @return result
 	 */
-	public static String compute(String source) {		
+	public String compute(String source) {		
 	
 		// Check number
         Integer number = checkNumber(source);
