@@ -167,18 +167,6 @@ public class FooBarQixTests {
 	}
 	
 	@Test
-	public void compute_ShouldWriteFooBarQix_WhenNumberIs0() {
-		// Assert
-		String number = "0";
-		
-		// Act
-		String result = FooBarQix.compute(number);
-		
-		// Arrange
-		assertThat(result).isEqualTo("FooBarQix*");
-	}
-	
-	@Test
 	public void computeSecondStep_ShouldReplaceZeroWithStar_WhenNumberContainsZeroWithDivisible() {
 		// Assert
 		String number = "105";
