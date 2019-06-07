@@ -21,7 +21,8 @@ public class MyFooBarQixApplication {
 	public static void main(String[] args) {
 		SpringApplication.run(MyFooBarQixApplication.class, args);
 		
-		if (args.length > 1) {
+		if (args.length > 1) 
+		{
 			FooBarQix fooBarQix = new FooBarQix();
 			
 			for(int i = 1; i < args.length; i++) {
@@ -30,7 +31,9 @@ public class MyFooBarQixApplication {
 			    
 			    System.out.format("%s => %s%n", args[i], result);	
 			}
-		} else {
+		} 
+		else 
+		{
 			showErrorsArgumentMissing();
 		}
 	}

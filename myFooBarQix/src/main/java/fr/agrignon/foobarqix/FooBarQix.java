@@ -35,15 +35,16 @@ public class FooBarQix {
     }
 	
 	/***
-	 * To convert the source to integer
+	 * To convert the input to integer
 	 * 
 	 * @param source
 	 * @return number
 	 */
-	private Integer checkNumber() {
+	private Integer convertInputToNumber() {
 		Integer number = Integer.valueOf(input);
 		
-		if (number < 0) {
+		if (number < 0) 
+		{
 			throw new IllegalArgumentException(MessageFormat.format("{0} is out of bounds", input));
 		}
 		
@@ -57,46 +58,52 @@ public class FooBarQix {
 	 */
 	private void divisibleRules(Integer number) {
 		for (Map.Entry<Integer, String> entry : FOOBARQIX_RULES.entrySet()) {
+			// Add the value of the rule if the number is divisible by the key
 			if ((number % entry.getKey()) == 0)
+			{
 				resolved.append(entry.getValue());
+			}
 		}
 	}
 	
 	/***
-	 * Check content of the source string
+	 * Rules on a character
 	 * 
 	 * @param source
 	 */
-	private void checkContentString() {
-		for (char c : input.toCharArray()) {
-			for (Map.Entry<Integer, String> entry : FOOBARQIX_RULES.entrySet()) {
-				if (c == String.valueOf(entry.getKey()).charAt(0))
-				{
-					resolved.append(entry.getValue());
-				}
+	private void characterRules(char c) {
+		for (Map.Entry<Integer, String> entry : FOOBARQIX_RULES.entrySet()) {
+			// Add the value of the rule if the character is equals to the key
+			if (c == String.valueOf(entry.getKey()).charAt(0))
+			{
+				resolved.append(entry.getValue());
 			}
-			
-			if (c == '0') {
-				resolved.append('*');
-			}
+		}
+		
+		// Add '*' if the character is a zero
+		if (c == '0')
+		{
+			resolved.append('*');
 		}
 	}
 	
 	/**
-	 * Write the source number if the result is empty
+	 * Rules on an empty resolved
 	 * 
 	 * @param source
 	 */
-	private void checkIfEmptyString() {
-		if (StringUtils.isEmpty(resolved.toString()) 
-				|| (StringUtils.isEmpty(resolved.toString().replace("*", ""))))
-		{
-			resolved = new StringBuilder();
-			for (char c : input.toCharArray()) {
-				if (c == '0')
-					resolved.append('*');
-				else
-					resolved.append(c);
+	private void emptyResolvedRules() {
+		resolved = new StringBuilder();
+		
+		// Scan all the characters of the input
+		for (char c : input.toCharArray()) {
+			if (c == '0') 
+			{
+				resolved.append('*');
+			}
+			else 
+			{
+				resolved.append(c);
 			}
 		}
 	}
@@ -118,18 +125,26 @@ public class FooBarQix {
 		// Save the input
 		this.input = input;
 		
-		// Check number
-        Integer number = checkNumber();
+		// Convert to number (with check)
+        Integer number = convertInputToNumber();
         
         // Divisible rules
         divisibleRules(number);
-	
-		// Check content of the source string
-		checkContentString();
-		
-		// Write the source number if the result is empty
-		checkIfEmptyString();
-		
+
+        // Scan all characters of the input
+        for (char c : input.toCharArray()) {
+        	// Rules on a character
+        	characterRules(c);
+        }
+
+        // Check if the resolved is empty or contains only stars (*)
+        if (StringUtils.isEmpty(resolved.toString()) 
+				|| (StringUtils.isEmpty(resolved.toString().replace("*", ""))))
+		{
+        	// Rules on an empty resolved
+        	emptyResolvedRules();
+		}
+        
 		return resolved.toString();
 	}
 }
