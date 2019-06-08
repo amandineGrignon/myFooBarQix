@@ -122,8 +122,9 @@ public class FooBarQix {
 	 */
 	public String compute(String input) {		
 	
-		// Save the input
+		// Initialize
 		this.input = input;
+		this.resolved = new StringBuilder();
 		
 		// Convert to number (with check)
         Integer number = convertInputToNumber();

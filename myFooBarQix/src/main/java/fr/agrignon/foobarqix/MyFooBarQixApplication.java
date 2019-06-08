@@ -1,40 +1,56 @@
 package fr.agrignon.foobarqix;
 
-import java.text.MessageFormat;
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
 
-import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 @SpringBootApplication
 public class MyFooBarQixApplication {
-
-	/** 
-	 * Show errors on the console if arguments are missing
-	 */
-	private static void showErrorsArgumentMissing() {		
-		System.err.println("Argument is missing, please run the program with these arguments :");
-		System.err.println("-s1 [following by numbers] (to use the compute method from the step 1)");
-		System.err.println("-s2 [following by numbers] (to use the compute method from the step 2)");
-        System.exit(1);
-	}
 	
-	public static void main(String[] args) {
-		SpringApplication.run(MyFooBarQixApplication.class, args);
-		
+	/**
+	 * Default parameters
+	 */
+	private static final List<String> DEFAULT_PARAMETERS = new ArrayList<>(
+		Arrays.asList(
+			"1", "2", "3", "4", "5", "6", "7", "8", "9", 
+			"10", "13", "15", "21", "33", "51", "53", 
+			"101", "303", "105", "10101"
+		)
+	);
+	
+	/**
+	 * Get list of numbers
+	 * 
+	 * @param args
+	 * @return list
+	 */
+	private static List<String> getNumberList(String[] args) {		
 		if (args.length > 1) 
-		{
-			FooBarQix fooBarQix = new FooBarQix();
-			
-			for(int i = 1; i < args.length; i++) {
-				// Call compute method from FooBarQix
-			    String result = fooBarQix.compute(args[i]);
-			    
-			    System.out.format("%s => %s%n", args[i], result);	
-			}
+		{	
+			return Arrays.asList(args);
 		} 
 		else 
 		{
-			showErrorsArgumentMissing();
+			return DEFAULT_PARAMETERS;
+		}
+	}
+
+	/**
+	 * Entry point of the application
+	 * 
+	 * @param args
+	 */
+	public static void main(String[] args) {
+		FooBarQix fooBarQix = new FooBarQix();
+		List<String> numbers = getNumberList(args);
+		
+		for (String number : numbers) {
+			// Call compute method from FooBarQix
+		    String result = fooBarQix.compute(number);
+		    
+		    System.out.format("%s => %s%n", number, result);	
 		}
 	}
 
