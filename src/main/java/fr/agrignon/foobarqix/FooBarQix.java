@@ -15,11 +15,6 @@ public class FooBarQix {
 	private StringBuilder resolved = new StringBuilder();
 	
 	/**
-	 * The input
-	 */
-	private String input;
-	
-	/**
 	 * The FooBarQix rules
 	 */
 	private static final Map<Integer, String> FOOBARQIX_RULES;
@@ -37,10 +32,10 @@ public class FooBarQix {
 	/***
 	 * To convert the input to integer
 	 * 
-	 * @param source
+	 * @param input
 	 * @return number
 	 */
-	private Integer convertInputToNumber() {
+	private Integer convertInputToNumber(String input) {
 		Integer number = Integer.valueOf(input);
 		
 		if (number < 0) 
@@ -69,7 +64,7 @@ public class FooBarQix {
 	/***
 	 * Rules on a character
 	 * 
-	 * @param source
+	 * @param c
 	 */
 	private void characterRules(char c) {
 		for (Map.Entry<Integer, String> entry : FOOBARQIX_RULES.entrySet()) {
@@ -90,9 +85,9 @@ public class FooBarQix {
 	/**
 	 * Rules on an empty resolved
 	 * 
-	 * @param source
+	 * @param input
 	 */
-	private void emptyResolvedRules() {
+	private void emptyResolvedRules(String input) {
 		resolved = new StringBuilder();
 		
 		// Scan all the characters of the input
@@ -117,17 +112,16 @@ public class FooBarQix {
 	 * For each digit 3, 5, 7, add “Foo”, “Bar”, “Qix” in the digits order.
 	 * And keep a trace of 0 in numbers, each 0 must be replace par char “*“
 	 * 
-	 * @param source
+	 * @param input
 	 * @return result
 	 */
 	public String compute(String input) {		
 	
 		// Initialize
-		this.input = input;
 		this.resolved = new StringBuilder();
 		
 		// Convert to number (with check)
-        Integer number = convertInputToNumber();
+        Integer number = convertInputToNumber(input);
         
         // Divisible rules
         divisibleRules(number);
@@ -143,7 +137,7 @@ public class FooBarQix {
 				|| (StringUtils.isEmpty(resolved.toString().replace("*", ""))))
 		{
         	// Rules on an empty resolved
-        	emptyResolvedRules();
+        	emptyResolvedRules(input);
 		}
         
 		return resolved.toString();
